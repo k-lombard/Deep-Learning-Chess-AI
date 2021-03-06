@@ -1,6 +1,8 @@
 # CS4641_Project
 
 
+Group 8
+
 Abstract:
 	The problem we are addressing is that there are no chess AI that play intuitively human moves. Current chess engines have been created to help find the best moves in any given position. The top chess AI’s in the world can easily beat any human player, but these chess AI often play counter-intuitive “engine moves” which are based on logic that doesn’t come naturally to humans playing the game. The effect of these moves can only be understood much later in the game. Our somewhat unique approach is to create and train a chess AI on chess grandmaster games so that our engine will play more intuitive “human moves.”
 
