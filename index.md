@@ -31,4 +31,4 @@ Silver, D.,  Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., L
 
 Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., Guez, A., Lockhart, E., Hassabis, D., Graepel, T., Lillicrap, T., & Silver, D. (2020). Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. arXiv:1911.08265v2. https://arxiv.org/pdf/1911.08265.pdf
 
-McIlroy-Young, Reid, et al. “Aligning Superhuman AI with Human Behavior.” Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining, 2020, doi:10.1145/3394486.3403219.
+McIlroy-Young, Reid, et al. “Aligning Superhuman AI with Human Behavior.” Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining, 2020, doi:10.1145/3394486.3403219. 
