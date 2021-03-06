@@ -23,7 +23,10 @@ Conclusion:
 	At the end of this project, we hope to gain knowledge in the power of chess AI to imitate human playing styles, and the power of AI in general to make human-like decisions. Additionally, we expect to learn how effective training a machine against human data is at fostering human-like decisions in AI. 
 
 References: 
+
 Littman, M. L. (2007). Markov games as a framework for multi-agent reinforcement learning. Brown University / Bellcore, 94. https://www2.cs.duke.edu/courses/spring07/cps296.3/littman94markov.pdf
 Silver, D.,  Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., Lillicrap, T., Simonyan, K., & Hassabis, D. (2017). Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm. arXiv:1712.01815v1. https://arxiv.org/abs/1712.01815
+
 Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., Guez, A., Lockhart, E., Hassabis, D., Graepel, T., Lillicrap, T., & Silver, D. (2020). Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model. arXiv:1911.08265v2. https://arxiv.org/pdf/1911.08265.pdf
+
 McIlroy-Young, Reid, et al. “Aligning Superhuman AI with Human Behavior.” Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining, 2020, doi:10.1145/3394486.3403219.
