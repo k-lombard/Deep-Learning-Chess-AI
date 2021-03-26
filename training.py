@@ -30,7 +30,7 @@ def parse():
                
                 
                 tempboard.push(move)
-                output = GameState(tempboard).print()
+                output = GameState(tempboard).bit_encode()
                 games.append(output)
                 values.append(game_value)
                 
