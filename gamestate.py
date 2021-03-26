@@ -1,7 +1,10 @@
 import chess
 class GameState(object):
-    def __init__(self):
-        self.board = chess.Board()
+    def __init__(self, board=None):
+        if board==None:
+            self.board = chess.Board()
+        else:
+            self.board = board
     
     def value(self):
         return 0
@@ -11,7 +14,7 @@ class GameState(object):
         return list(self.board.legal_moves)
     
     def print(self):
-        pass
+        return self.board.fen()
 
 
    
