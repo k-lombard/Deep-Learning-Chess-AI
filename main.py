@@ -4,4 +4,4 @@ from training import parse
 # g = GameState()
 # print(g.successors())
 
-parse()
+print(parse())
