@@ -13,7 +13,7 @@ class GameState(object):
     def successors(self):
         return list(self.board.legal_moves)
     
-    def print(self):
+    def bit_encode(self):
         return self.board.fen()
 
 
