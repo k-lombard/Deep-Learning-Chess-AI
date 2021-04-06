@@ -37,8 +37,8 @@ class Data(Sequence):
         startIndex = index * self.batch_size
 
         if (startIndex + self.batch_size < len(self.black_positions)):
-            w_batch = self.white_positions[startIndex : self.batch_size]
-            b_batch = self.black_positions[startIndex : self.batch_size]
+            w_batch = self.white_positions[startIndex : startIndex + self.batch_size]
+            b_batch = self.black_positions[startIndex : startIndex + self.batch_size]
         else:
             w_batch = self.white_positions[startIndex:]
             b_batch = self.black_positions[startIndex:]
