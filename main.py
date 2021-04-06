@@ -1,12 +1,6 @@
 from gamestate import GameState
-from training import testing
-from training import parse
+from training import prepare_data
 
 
-# g = GameState()
-# print(g.successors())
+print(prepare_data())
 
-
-print(testing())
-
-#print(parse())
