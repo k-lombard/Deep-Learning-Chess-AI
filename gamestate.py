@@ -7,20 +7,20 @@ class GameState(object):
             self.board = chess.Board()
         else:
             self.board = board
-    
+
     def value(self):
         return 0
-    
+
 
     def successors(self):
         return list(self.board.legal_moves)
-    
+
     def bit_encode(self):
-        #encodes a board state as a 774 "bitstring" which is an array of 1s or 0s. 
+        #encodes a board state as a 774 "bitstring" which is an array of 1s or 0s.
         #6 pieces * 64 squares * 2 colors = 768 + 6 bits for castling/to-move/en passant = 774 bits
         bitstring = []
         for num in range(64):
-            
+
             if self.board.piece_at(num) == None:
                 empty = [0,0,0,0,0,0,0,0,0,0,0,0]
                 bitstring = bitstring + empty
@@ -58,14 +58,14 @@ class GameState(object):
             bitstring.append(1)
         else:
             bitstring.append(0)
-        
-        
 
-                
-            
+
+
+
+
         return bitstring
 
 
-   
+
 
 
