@@ -1,0 +1,18 @@
+from numpy import loadtxt
+from keras.models import Sequential
+from keras.layers import Dense
+# load the dataset
+dataset = loadtxt('training.csv', delimiter=',')
+# split into input (X) and output (y) variables
+X = dataset[:, :-2]
+y = dataset[:, -2:]
+# define the keras model
+model = Sequential()
+model.add(Dense(400, input_dim=774, activation='relu'))
+model.add(Dense(200, activation='relu'))
+model.add(Dense(100, activation='relu'))
+model.add(Dense(2, activation = 'softmax'))
+# compile the keras model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+# fit the keras model on the dataset
+model.fit(X, y, epochs=150, batch_size=10)
