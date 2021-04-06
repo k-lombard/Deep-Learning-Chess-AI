@@ -9,8 +9,8 @@ import csv
 def parse():
     games = []
     values = []
-    for pgnfile in os.listdir("training"):
-        pgn = open(os.path.join("training", pgnfile))
+    for pgnfile in os.listdir("games"):
+        pgn = open(os.path.join("games", pgnfile))
         count = 0
         while True:
             try:
@@ -47,46 +47,57 @@ def parse():
     #print(games, values)
 
 
-def testing():
-    with open('training.csv', mode = 'w') as training_data:
-        data_writer = csv.writer(training_data, delimiter = ',')
-        x = 0
-        for pgnfile in os.listdir("training"):
-            pgn = open(os.path.join("training", pgnfile))
-            value_assign_dict = {'1-0': [1,0], '0-1': [0,1], '1/2-1/2': [0,0]}
-            while (True):
-                try:
-                    subpgn = chess.pgn.read_game(pgn)
-                except:
-                    break
+def prepare_data():
 
-                try:
-                    game_value = value_assign_dict[subpgn.headers['Result']]
-                except:
-                    break
+    positions = []
+    results = []
+    x = 0
 
-                if game_value[0] == 0 and game_value[1] == 0:
-                    continue
+    for pgnfile in os.listdir("games"):
+        pgn = open(os.path.join("games", pgnfile))
+        value_assign_dict = {'1-0': [1,0], '0-1': [0,1], '1/2-1/2': [0,0]}
 
-                upper_bound = subpgn.end().ply()
+        while (True):
+            try:
+                subpgn = chess.pgn.read_game(pgn)
+            except:
+                break
 
-                if upper_bound <= 5:
-                    continue
+            try:
+                game_value = value_assign_dict[subpgn.headers['Result']]
+            except:
+                break
 
-                tempboard = subpgn.board()
-                mainline_moves = subpgn.mainline_moves()
-                for j in range(10):
-                    tempboard.reset()
-                    move_number = random.randint(5, upper_bound)
-                    iterator = iter(mainline_moves)
-                    for i in range(move_number):
-                        tempboard.push(next(iterator))
-                    print(game_value)
-                    data_writer.writerow(GameState(tempboard).bit_encode() + game_value)
-                    print(tempboard)
-                    print("------------------")
-                    print("------------------")
-                    print("------------------")
-                    x+=1
-        print(x)
+            if game_value[0] == 0 and game_value[1] == 0:
+                continue
+
+            upper_bound = subpgn.end().ply()
+
+            if upper_bound <= 5:
+                continue
+
+            tempboard = subpgn.board()
+            mainline_moves = subpgn.mainline_moves()
+
+            for j in range(10):
+                tempboard.reset()
+                move_number = random.randint(5, upper_bound)
+                iterator = iter(mainline_moves)
+                for i in range(move_number):
+                    tempboard.push(next(iterator))
+                trian_game_value = game_value[0]
+                positions.append(GameState(tempboard).bit_encode())
+                results.append(trian_game_value)
+                print(game_value)
+                print(tempboard)
+                print("------------------")
+                print("------------------")
+                print("------------------")
+                x+=1
+
+    positions = np.array(positions)
+    results = np.array(labels)
+    np.save('./data/positions.npy', positions)
+    np.save('./data/results.npy', results)
+    print(x)
 
