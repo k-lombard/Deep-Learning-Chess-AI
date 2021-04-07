@@ -88,15 +88,10 @@ def prepare_data():
                 trian_game_value = game_value[0]
                 positions.append(GameState(tempboard).bit_encode())
                 results.append(trian_game_value)
-                print(game_value)
-                print(tempboard)
-                print("------------------")
-                print("------------------")
-                print("------------------")
                 x+=1
 
     positions = np.array(positions)
-    results = np.array(labels)
+    results = np.array(results)
     np.save('./data/positions.npy', positions)
     np.save('./data/results.npy', results)
     print(x)

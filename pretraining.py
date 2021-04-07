@@ -1,3 +1,4 @@
+from tensorflow import keras
 import numpy as np
 import os
 from keras.layers import Dense
@@ -20,15 +21,17 @@ weights = []
 
 for i in range(len(DBNlayers) - 1):
 
-    print(i + "layer training")
+    print("layer training")
+    print(i)
 
     input_layer = Input(shape = (DBNlayers[i], ))
     middle_layer = Dense(DBNlayers[i + 1], activation = 'relu')(input_layer)
     expected_output = Dense(DBNlayers[i], activation = 'relu')(middle_layer)
 
+    opt = keras.optimizers.Adam(learning_rate = 0.005)
     model = Model(inputs = input_layer, outputs = expected_output)
-    model.compile(optimizer = 'adam', loss = 'mse', metrix = ['mse'])
-    model.fit(dataset, dataset, epochs = 20, batch_size = 256, shuffle = True)
+    model.compile(optimizer = opt, loss = 'mse', metrics = ['mse'])
+    model.fit(dataset, dataset, epochs = 200, batch_size = 256, shuffle = True)
 
     weights.append(model.layers[1].get_weights())
 
