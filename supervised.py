@@ -96,8 +96,13 @@ output_layer = Dense(supervised_layers[3], activation='softmax')(layer3)
 
 
 pooya_and_associates_model = Model([top_input, bottom_input], output_layer)
+rate = keras.optimizers.schedules.ExponentialDecay(
+    initial_learning_rate=0.005,
+    decay_steps=10000,
+    decay_rate=0.98)
+opt = keras.optimizers.Adam(learning_rate=rate)
 
-pooya_and_associates_model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['acc'])
+pooya_and_associates_model.compile(optimizer = opt, loss = 'categorical_crossentropy', metrics = ['acc'])
 
 pooya_and_associates_model.fit_generator(data_object, epochs = 200)
 
