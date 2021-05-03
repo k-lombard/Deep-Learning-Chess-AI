@@ -1,4 +1,4 @@
-import keras
+from tensorflow import keras
 import numpy as np
 import os
 from keras.layers import Dense
@@ -38,7 +38,7 @@ for i in range(len(DBNlayers) - 1):
     middle_output = B.function([model.input], [model.layers[1].output])
 
     dataset = middle_output([dataset])[0]
-    
+
 
 input_layer = Input(shape = (DBNlayers[0],))
 encoder1 = Dense(DBNlayers[1], activation = 'relu', trainable = False)(input_layer)
