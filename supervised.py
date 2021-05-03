@@ -4,7 +4,7 @@ from keras.utils import Sequence
 from keras import backend as B
 from keras.layers import Dense, Input, Concatenate
 from keras.models import Model, load_model
-
+import keras
 
 
 supervised_layers = [400, 200, 100, 2]
@@ -22,7 +22,7 @@ class Data(Sequence):
         self.white_positions = positions[results == 1]
         self.black_positions = positions[results == 0]
 
-        self.white_positions = self.white_positions[len(black_positions):]
+        self.white_positions = self.white_positions[:len(self.black_positions)]
 
 
         np.random.shuffle(self.white_positions)
@@ -61,7 +61,7 @@ class Data(Sequence):
 
         batch1 = np.squeeze(batch1)
 
-        batch2 = np.sqeeze(batch2)
+        batch2 = np.squeeze(batch2)
 
         return [batch1, batch2], outputs
 
@@ -104,7 +104,7 @@ opt = keras.optimizers.Adam(learning_rate=rate)
 
 pooya_and_associates_model.compile(optimizer = opt, loss = 'categorical_crossentropy', metrics = ['acc'])
 
-pooya_and_associates_model.fit_generator(data_object, epochs = 200)
+pooya_and_associates_model.fit_generator(data_object, epochs = 1000)
 
 pooya_and_associates_model.save("./network/DeepLearningModel.h5")
 
