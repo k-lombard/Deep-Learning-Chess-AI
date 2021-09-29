@@ -1,4 +1,5 @@
-Abstract
+Abstract:
+
 The problem we are addressing is that today’s chess AI’s are based on complicated
 evaluation . Current chess engines have been created to help find the best moves
 in any given position. The top chess AI’s in the world can easily beat any human
@@ -19,7 +20,9 @@ will perform at over 70% accuracy and the complete AI will be able to play chess
 at an intermediate level of around 1200 ELO. Our main goal is to maximize the
 accuracy of our supervised learning which will directly correlate to an increase in
 ELO rating.
-Introduction
+
+Introduction:
+
 Our motivation for this project is that the members of the group are chess players and felt it would
 be interesting to explore the idea of creating a chess AI based on deep learning, a concept that we
 covered in this class. We have seen the emergence of current chess AI’s and wanted to create our
@@ -41,7 +44,9 @@ the strength of a position. Our hope is that training our neural network with da
 by humans will make the moves that it suggests more intuitive. Creating this evaluation function will
 be a matter of training our neural network. Then, we will use our trained network to predict the best
 possible move given a position.
-Problem Definition
+
+Problem Definition:
+
 The portion of this project that involves machine learning is the creation of the evaluation function.
 We built this function using an artificial neural network. The goal of our evaluation function is to
 take two chess positions as inputs and return which of these two positions is better for white. For
@@ -55,7 +60,9 @@ compare the positions. We will then use the trained neural net to evaluate the s
 would be the result of a legal move given a current board state. Since this is a deep-learning model,
 assumptions are based on prior beliefs about the type of hypothesis the model should be learning. We
 assume that a randomly chosen position from a game that white wins is a stronger position for white.
-Data Collection
+
+Data Collection:
+
 Through extracting data with a python script, we actually have a unique data set that only exists with
 us. We used files in the pgn format that are used to represent chess games. Parsing these games
 with the python chess library, we extracted 200,000 random positions from over 20,000 grandmaster
@@ -84,11 +91,9 @@ these positions to our disk so that we can load them from a different python exe
 neural network with our data set. We picked this as our data set because the data is taken from real
 human games, so the machine will be trained on human moves, but since professional Grandmaster
 games are used, it will still play extremely well.
-2
-Figure 1: Deep Belief Network Architecture (fully connected)
-Figure 2: Supervised learning architecture (fully connected)
-3
-Methods
+
+Methods:
+
 The baseline for this task is to manually evaluate a chess position based on a variety of factors and
 make a decision on which move to make based on material gain and foresight of a human. The core of
 our method is the creation of an evaluation function from scratch. In the history of chess AI, heuristic
@@ -126,7 +131,9 @@ adam optimization function with a learning rate that started at 0.005 and was mu
 saved the weights and biases of our supervised training network into a h5 file format. Given a chess
 position and this model, we are able to iterate through all legal moves from that position using an
 alpha-beta search, prune positions that will not be reached, and choose our best option given a depth.
-Metrics
+
+Metrics:
+
 To assess the effectiveness of our neural network, we considered a variety of quantities. After each
 epoch, we print the accuracy of the neural network. This measures the percentage of the data set that
 the neural network predicts accurately. Because each epoch is largely unique due to the varying nature
@@ -143,11 +150,12 @@ net, we then assessed the accuracy of the moves that the AI would output. This m
 subjective as we were not able to objectively judge the quality of a move. However, based on our
 personal knowledge of chess and chess analysis software, we were able to estimate the quality of our
 chess AI’s moves. One final way of measuring the quality of our model was to actually have our AI
-4
 play different opponents of varying strengths and assign an ELO rating to the engine. However, this
 metric is not favorable as it is subject to chance and requires a fully functioning chess AI that has the
 ability to play in all three stages of the game effectively.
-Results
+
+Results:
+
 At the time of Touchpoint 2, we had completed supervised training with an experimental loss
 function and learning rate. When we finalized our initial unsupervised training, we achieved good
 results. Our mean squared error for each of our layers was about .003. The weights of this network
@@ -163,7 +171,9 @@ does not exceed the baseline we defined as members of our group that have experi
 can more accurately assess the strength of positions. However, we are pleased to achieve this level of
 accuracy with the limited computing power available to us. There is definitely room for improvement
 which we detail in the next section.
-Results 2
+
+Results 2:
+
 After our first training session, we made considerable changes to our model. We doubled the data
 of the original training by adding more games and running our data extraction script again. We
 also designed a custom learning rate that exhibited a feature of exponential decay. Our epochs for
@@ -187,11 +197,7 @@ can filter out positions that happen adjacent to a capture, as this results in a
 one side. The biggest improvement in the game-playing performance can most likely be made in the
 actual search algorithm. We haven’t included any of the rules of chess, including checkmate, into our
 algorithm. It is strictly running on the preferences of the neural net output.
-5
-Figure 3: Accuracy of supervised network over training period
-Figure 4: MSE of deep belief network over training period
-6
-Figure 5: Chess Game Against Trained Network with Depth 4
+
 Game PGN: 1. a3 Nf6 2. b4 g6 3. h4 d6 4. Bb2 Bg7 5. Qc1 O-O 6. f3 Nc6 *
 In this game against the fully trained network (with a maximum accuracy of 77 percent and at a
 search depth of 4 in the alpha-beta search), the computer using the alpha-beta search and the trained
@@ -210,8 +216,9 @@ to a limited number of moves as a depth of 4 is a very time consuming calculatio
 hardware. Overall, our network seems to understand some positional attacking ideas and complex
 moves but without a higher accuracy and greater search depth, lacks foresight in piece exchanges and
 lacks any understanding of opening principles.
-7
-Discussion
+
+Discussion:
+
 We have gained an idea for how game AI’s work in general. We understand that an evaluation function
 is the core of a game AI. However, that evaluation function is usually built as a linear combination of
 factors affecting the game. We learned how to create such a heuristic function from scratch using
@@ -229,7 +236,9 @@ to seek impressive computing power. There are many directions to improve the per
 model. Further steps that we can take are modifying the architecture of our network and allowing for
 the pre-trained layer weights to be modified during our supervised training. Other improvements we
 can make are outlined in the results section above.
-Ethics Statement
+
+Ethics Statement:
+
 One socially positive outcome of our work is that people will be able to play and practice chess
 similar to a game against a real human, making it better for practice than playing against a machine
 that is impossible to beat. A big potential ethical issue is that someone can use the chess AI to cheat
@@ -244,8 +253,9 @@ use human data it would defeat the purpose of creating the machine. A problem th
 fanatics would raise is that machines are ruining chess by making it solely a game of preparation
 using an engine rather than a creative endeavour. This argument has been a common dilemma ever
 since the time that the world champion was beaten by a computer.
-8
-Bibliography
+
+Bibliography:
+
 [1] Littman, M. L. (2007). Markov games as a framework for multi-agent reinforcement learning. Brown
 University / Bellcore, 94. https://www2.cs.duke.edu/courses/spring07/cps296.3/littman94markov.pdf
 [2] Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., Lanctot, M., Sifre, L.,
